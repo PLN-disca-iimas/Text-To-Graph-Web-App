@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Text To Graph</title>
+  <link rel="icon" type="image/png" href="/assets/images&icon.png" sizes="32x32">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/graph_form.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/graph_plot.css') }}">
+</head>
+
+<body class="graph-page-body">
+  
+  <div class="graph-page-container">
+      <div class="graph-form-page-title-container">
+        <a class="graph-form-page-title" href="/graph-form/">Generador de texto a Grafo</a>
+      </div>
+
+      {% block body %}{% endblock %}
+    
+      <footer class="graph-form-footer">
+        <img src="/assets/images&iimas.png" alt="">
+        
+        Made by 
+        <a href="https://github.com/diegoavendano1998" target="_blank">
+            <span class="text-primary">
+                Diego AB.
+            </span>
+        </a>
+
+        Powered by
+        <a href="https://pypi.org/project/text2graphapi/" target="_blank">
+            <span class="text-primary">
+                Text to graph API
+            </span>
+        </a>
+        |
+        <a href="https://networkx.org/" target="_blank">
+            <span class="text-primary">
+                NetworkX
+            </span>
+        </a>
+    </footer>
+  </div>
+</body>

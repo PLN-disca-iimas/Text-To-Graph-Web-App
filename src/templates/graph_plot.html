@@ -1,0 +1,21 @@
+{% extends 'base_graph.html' %}
+
+{% block body %}
+
+<div class="graph-plot-input-container">
+    <textarea type="textarea" disabled>{{ original_text }}</textarea>
+</div>
+
+<div class="graph-plot-image-container">
+    <img src="/assets/outputs&graphs&{{ docname }}.png" alt="{{ docname }}" class="graph-plot-image">
+</div>
+
+<div class="graph-plot-buttons-container">
+    <a class="graph-plot-download-image-button" href="/download-file/outputs&graphs&{{docname}}.png">
+        Descargar imagen
+    </a>
+    <a class="graph-plot-download-txt-button" href="/download-file/outputs&graphs&{{docname}}.txt">
+        Descargar .txt
+    </a>
+</div>
+{% endblock %}
