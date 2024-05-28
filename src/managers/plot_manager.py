@@ -22,7 +22,7 @@ class PlotManager:
 
         edge_prefix = "tfidf" if graph_type == HETEROGENEUS else "freq"
         edge_labels = dict([((nodes_labels[edge_from], nodes_labels[edge_to]), f"{edge_prefix}={frequency.get(edge_prefix)}") for edge_from, edge_to, frequency in transformed_graph.get("edges",[])])
-        edge_colors = [0.1] * len(transformed_graph.get("edges",[]))
+        edge_colors = [0] * len(transformed_graph.get("edges",[]))
 
         if graph_type == COOCURRENCE:
             edge_colors = [int((edge_labels[(nodes_labels[edge_from], nodes_labels[edge_to])]).replace(f"{edge_prefix}=","")) / 10 for edge_from, edge_to in transformed_graph["nx_graph"].edges() if edge_labels[(nodes_labels[edge_from], nodes_labels[edge_to])]]
@@ -36,12 +36,11 @@ class PlotManager:
         )
         edges_options = EdgesOptions(
             edge_color=edge_colors,
-            arrows=plot_options.get("arrows"),
             arrowsize=plot_options.get("arrowsize"),
             arrowstyle=plot_options.get("arrowstyle"),
         )
         edge_labels_options = EdgeLabelsOptions(
-            font_size=plot_options.get("font_size", 4)
+            font_size=int(plot_options.get("font_size", 4)) - 2
         )
 
         return PlotOptions(

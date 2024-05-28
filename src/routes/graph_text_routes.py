@@ -1,4 +1,4 @@
-from flask import render_template, request, url_for, redirect
+from flask import render_template, request, url_for, redirect, flash
 
 from src import app
 from src.services.graph_text_service import GraphTextService
@@ -30,9 +30,11 @@ def generate_graph():
         return redirect(url_for("graph_plot", docname=docname))
 
     else:
-        print(form.__dict__)
+        for key, error_messages in form.errors.items():
+            for error_message in error_messages:
+                flash(error_message or "", "danger")
     
-    return "ko"
+    return redirect(url_for("graph_form"))
 
 @app.route('/graph-plot/<docname>', methods=["GET"])
 def graph_plot(docname):

@@ -5,6 +5,34 @@ body{
     background: linear-gradient(180deg, rgba(194,196,196,0.54) 50%, rgba(157,160,161,0.79) 65%, rgba(79,79,79,0.72) 75%);
 }
 
+.alert{
+    text-align: center;
+    margin-bottom: 2vh;
+    padding: 1vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.alert-success{
+    background-color: rgba(0, 255, 0, 0.3);
+}
+
+.alert-warning{
+    background-color: rgba(255, 255, 0, 0.3);
+}
+
+.alert-danger{
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.alert > button{
+    background: none;
+    border: none;
+    font-weight: 900;
+    margin-left: 2vw;
+}
+
 .graph-form-page-title-container{
     text-align: center;
     margin-bottom: 3vh;
