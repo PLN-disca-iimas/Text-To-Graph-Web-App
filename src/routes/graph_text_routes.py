@@ -21,7 +21,7 @@ def graph_form():
 def generate_graph():
     form = BaseGraphForm(meta={"csrf": False})
 
-    if form.validate_on_submit():
+    if len(request.form.get("text", "")) or request.files.getlist(form.file.name)[0]:
         docname = GraphTextService.generate_graph(request.form.to_dict(), request.files.getlist(form.file.name)[0])
 
         if not docname:
@@ -30,9 +30,7 @@ def generate_graph():
         return redirect(url_for("graph_plot", docname=docname))
 
     else:
-        for key, error_messages in form.errors.items():
-            for error_message in error_messages:
-                flash(error_message or "", "danger")
+        flash("Por favor ingresa una entrada de texto", "warning")
     
     return redirect(url_for("graph_form"))
 
