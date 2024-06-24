@@ -23,3 +23,11 @@ GRAPH_TYPES = [
     (COOCURRENCE, "Coocurrencia"),
     (HETEROGENEUS, "Heterogenea")
 ]
+NODE_CATEGORY_COLORS = {
+    "NOUN": 1,
+    "PROPN": 2,
+    "VERB": 3,
+    "X": 4,
+    "ADJ": 5,
+    "ADP": 6
+}

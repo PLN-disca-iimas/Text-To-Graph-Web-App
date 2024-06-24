@@ -20,7 +20,7 @@ class EdgesOptions(BaseModel):
     connectionstyle: str = f"arc3,rad=0.1"
 
 class EdgeLabelsOptions(BaseModel):
-    font_size: int
+    font_size: Optional[int] = 2
 
 class PlotOptions(BaseModel):
     nodes_labels: dict
