@@ -1,7 +1,9 @@
 {% extends 'base_graph.html' %}
 
 {% block body %}
-
+<div class="graph-plot-copy-button-container">
+    <button value="{{ original_text }}" onclick="copyToClipboard(this.value)">Copiar</button>
+</div>
 <div class="graph-plot-input-container">
     <textarea type="textarea" disabled>{{ original_text }}</textarea>
 </div>
@@ -10,6 +12,9 @@
     <img src="/assets/outputs&graphs&{{ docname }}.png" alt="{{ docname }}" class="graph-plot-image">
 </div>
 
+<div class="graph-plot-copy-button-container">
+    <button value="{{ text_graph }}" onclick="copyToClipboard(this.value)">Copiar</button>
+</div>
 <div class="graph-test-graph-container">
     <textarea type="textarea" disabled>{{ text_graph }}</textarea>
 </div>
@@ -22,4 +27,23 @@
         Descargar .txt
     </a>
 </div>
+
+<script>
+    async function copyToClipboard(text){
+        const textArea = document.createElement("textarea"); 
+        textArea.value=text; 
+        document.body.appendChild(textArea); 
+        textArea.focus();
+        textArea.select(); 
+
+        try{
+            document.execCommand('copy');
+            alert("Texto copiado al portapapeles");
+        }
+        catch(err){
+            console.error('Ocurrió un error al copiar el texto',err)
+        }
+        document.body.removeChild(textArea)
+    }
+</script>
 {% endblock %}

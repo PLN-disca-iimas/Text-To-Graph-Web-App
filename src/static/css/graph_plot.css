@@ -1,3 +1,17 @@
+.graph-plot-copy-button-container{
+    width: 70%;
+    text-align: right;
+    margin-left: 10%;
+    margin-bottom: 1vh;
+}
+
+.graph-plot-copy-button-container>button{
+    font-size: 2vh;
+    background: none;
+    border: none;
+    text-decoration: underline;
+}
+
 .graph-test-graph-container,
 .graph-plot-input-container{
     text-align: center;
@@ -19,11 +33,11 @@
     border: none;
     border-radius: 3vh;
     margin-bottom: 3vh;
-    margin-top: 3vh;
 }
 
 .graph-plot-image-container{
     width: 100%;
+    margin-bottom: 3vh;
 }
 
 .graph-plot-image{
