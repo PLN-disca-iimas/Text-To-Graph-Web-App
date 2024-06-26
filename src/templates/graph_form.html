@@ -16,28 +16,47 @@
             {{ form.file.label(class_="form-label") }}
             {{ form.file(class_="form-field")}}
         </div>
-
-        <div class="form-graph-sizes-container">
+        <div class="form-graph-settings-container">
             <div>
-                {{ form.node_size.label(class_="form-label") }}
-                {{ form.node_size(class_="form-field")}}
+                {{ form.language.label(class_="form-label") }}
+                {{ form.language(class_="form-field")}}
             </div>
-            
             <div>
-                {{ form.font_size.label(class_="form-label") }}
-                {{ form.font_size(class_="form-field")}}
+                {{ form.apply_prep.label(class_="form-label") }}
+                {{ form.apply_prep(class_="form-field")}}
             </div>
         </div>
-
-        <div class="form-graph-arrow-container">
+        <div class="form-graph-steps-processing-container">
             <div>
-                {{ form.arrowsize.label(class_="form-label") }}
-                {{ form.arrowsize(class_="form-field")}}
+                {{ form.steps_preprocessing.label(class_="form-label") }}
+                {{ form.steps_preprocessing(class_="form-field")}}
             </div>
-
-            <div>
-                {{ form.arrowstyle.label(class_="form-label") }}
-                {{ form.arrowstyle(class_="form-field")}}
+        </div>
+        
+        <a data-toggle="collapse" data-target="#more-plot-options-collapse">More Plot Options ></a>
+        <div id="more-plot-options-collapse" class="collapse">
+            <div class="form-graph-sizes-container">
+                <div>
+                    {{ form.node_size.label(class_="form-label") }}
+                    {{ form.node_size(class_="form-field")}}
+                </div>
+                
+                <div>
+                    {{ form.font_size.label(class_="form-label") }}
+                    {{ form.font_size(class_="form-field")}}
+                </div>
+            </div>
+    
+            <div class="form-graph-arrow-container">
+                <div>
+                    {{ form.arrowsize.label(class_="form-label") }}
+                    {{ form.arrowsize(class_="form-field")}}
+                </div>
+    
+                <div>
+                    {{ form.arrowstyle.label(class_="form-label") }}
+                    {{ form.arrowstyle(class_="form-field")}}
+                </div>
             </div>
         </div>
         <input class="btn btn-dark text-light btn-block graph-form-submit-button" type="submit" value="Graficar">

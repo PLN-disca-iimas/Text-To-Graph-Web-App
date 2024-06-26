@@ -22,7 +22,10 @@ def generate_graph():
     form = BaseGraphForm(meta={"csrf": False})
 
     if len(request.form.get("text", "")) or request.files.getlist(form.file.name)[0]:
-        docname = GraphTextService.generate_graph(request.form.to_dict(), request.files.getlist(form.file.name)[0])
+        docname = GraphTextService.generate_graph(
+            {**request.form.to_dict(), **{"apply_prep": form.apply_prep.data, "steps_preprocessing": form.steps_preprocessing.data}}, 
+            request.files.getlist(form.file.name)[0]
+        )
 
         if not docname:
             return redirect(url_for("graph_form"))
@@ -36,6 +39,7 @@ def generate_graph():
 
 @app.route('/graph-plot/<docname>', methods=["GET"])
 def graph_plot(docname):
+    text_graph = GraphTextService.get_text_graph(docname)
     original_text = GraphTextService.get_original_text(docname)
     
     return render_template("graph_plot.html", **locals())

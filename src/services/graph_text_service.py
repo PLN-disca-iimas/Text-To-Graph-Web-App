@@ -17,10 +17,10 @@ class GraphTextService:
         return Text2GraphApiconnector.get_test()
 
     @staticmethod
-    @exception_handler
+    # @exception_handler
     def generate_graph(graph_data: dict, file: FileStorage) -> str:
         docname = GraphTextService._get_random_docname()
-        graph = GraphTextService.get_graph_by_type(graph_data.get("type", ""))
+        graph = GraphTextService.get_graph_by_type(graph_data.get("type", ""), graph_data)
 
         if not graph:
             return ""
@@ -31,7 +31,7 @@ class GraphTextService:
         transformed_text = Text2GraphApiconnector.get_transformed_text(graph, [{"id": 1, "doc": graph_data.get("text", "")}])
         PlotManager.generate_plot_image(graph, transformed_text[0], graph_data, docname, graph_data.get("type", ""))
         FileManager.write_file(str(transformed_text), f"{GRAPH_OUTPUT_DIRECTORY}{docname}.txt")
-        FileManager.write_file(str(graph_data.get("text", "")), f"{GRAPH_OUTPUT_DIRECTORY}{docname}_.txt")
+        FileManager.write_file(str(transformed_text[0].get("prep_text")), f"{GRAPH_OUTPUT_DIRECTORY}{docname}_.txt")
 
         return docname
     
@@ -39,6 +39,11 @@ class GraphTextService:
     @exception_handler
     def get_original_text(docname: str) -> str:
         return FileManager.read_file(f"{GRAPH_OUTPUT_DIRECTORY}{docname}_.txt")
+
+    @staticmethod
+    @exception_handler
+    def get_text_graph(docname: str) -> str:
+        return FileManager.read_file(f"{GRAPH_OUTPUT_DIRECTORY}{docname}.txt")
     
     @staticmethod
     @exception_handler
@@ -55,10 +60,10 @@ class GraphTextService:
     
     @staticmethod
     @exception_handler
-    def get_graph_by_type(graph_type: str):
+    def get_graph_by_type(graph_type: str, graph_data: dict):
         GRAPH_TYPES_FUNCTIONS = {
-            COOCURRENCE: Text2GraphApiconnector.get_coocurrence_graph(),
-            HETEROGENEUS: Text2GraphApiconnector.get_heterogeneus_graph()
+            COOCURRENCE: Text2GraphApiconnector.get_coocurrence_graph(graph_data),
+            HETEROGENEUS: Text2GraphApiconnector.get_heterogeneus_graph(graph_data)
         }
 
         graph = GRAPH_TYPES_FUNCTIONS.get(graph_type)

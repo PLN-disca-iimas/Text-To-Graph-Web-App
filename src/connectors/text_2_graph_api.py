@@ -19,21 +19,25 @@ class Text2GraphApiconnector:
         return to_word_coocc_graph_transformed
 
     @staticmethod
-    def get_coocurrence_graph() -> Cooccurrence:
+    def get_coocurrence_graph(graph_options: dict) -> Cooccurrence:
         coocurrence_graph = Cooccurrence(
             graph_type='DiGraph', 
-            language='en', 
-            window_size=3, 
+            language=graph_options.get('language','sp'), 
+            apply_prep=graph_options.get('apply_prep',True), 
+            steps_preprocessing=graph_options.get('steps_preprocessing',[]),
+            window_size=int(graph_options.get('window_size',20)),
             output_format='adj_matrix'
         )
         return coocurrence_graph
 
     @staticmethod
-    def get_heterogeneus_graph() -> Heterogeneous:
+    def get_heterogeneus_graph(graph_options: dict) -> Heterogeneous:
         to_hetero_graph = Heterogeneous(
             graph_type = 'Graph', 
-            window_size = 20,
-            language = 'en', 
+            language=graph_options.get('language','sp'), 
+            apply_prep=graph_options.get('apply_prep',True), 
+            steps_preprocessing=graph_options.get('steps_preprocessing',[]), 
+            window_size=int(graph_options.get('window_size',20)),
             output_format = 'networkx'
         )
         return to_hetero_graph
