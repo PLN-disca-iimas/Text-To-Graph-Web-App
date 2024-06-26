@@ -1,3 +1,4 @@
+.graph-test-graph-container,
 .graph-plot-input-container{
     text-align: center;
 }
@@ -9,6 +10,16 @@
     border: 1px solid lightgray;
     border-radius: 3vh;
     margin-bottom: 3vh;
+}
+
+.graph-test-graph-container>textarea{
+    width: 80%;
+    height: 15vh;
+    padding: 1vh;
+    border: none;
+    border-radius: 3vh;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
 }
 
 .graph-plot-image-container{
