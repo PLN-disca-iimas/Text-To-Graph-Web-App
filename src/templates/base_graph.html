@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Text To Graph</title>
   <link rel="icon" type="image/png" href="/assets/images&icon.png" sizes="32x32">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/base_graph.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='/css/graph_form.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='/css/graph_plot.css') }}">
 
@@ -19,6 +20,7 @@
   <div class="graph-page-container">
       <div class="graph-form-page-title-container">
         <a class="graph-form-page-title" href="/graph-form/">Generador de texto a Grafo</a>
+        <img src="/assets/images&iimas.png" alt="">
       </div>
 
       {% with messages = get_flashed_messages(with_categories=true) %}
