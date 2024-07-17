@@ -81,6 +81,7 @@ body{
     width: 40%;
 }
 
+.form-graph-settings-container>div>input,
 .form-graph-settings-container>div>select{
     width: 80%;
     border-radius: 5px;
@@ -119,6 +120,7 @@ body{
 }
 
 .form-graph-arrow-container{
+    margin-top: 2vh;
     display: flex;
     justify-content: left;
 }

@@ -25,7 +25,7 @@ class Text2GraphApiconnector:
             language=graph_options.get('language','sp'), 
             apply_prep=graph_options.get('apply_prep',True), 
             steps_preprocessing=graph_options.get('steps_preprocessing',[]),
-            window_size=int(graph_options.get('window_size',20)),
+            window_size=int(graph_options.get('window_size',2)),
             output_format='adj_matrix'
         )
         return coocurrence_graph
@@ -37,7 +37,7 @@ class Text2GraphApiconnector:
             language=graph_options.get('language','sp'), 
             apply_prep=graph_options.get('apply_prep',True), 
             steps_preprocessing=graph_options.get('steps_preprocessing',[]), 
-            window_size=int(graph_options.get('window_size',20)),
+            window_size=int(graph_options.get('window_size',2)),
             output_format = 'networkx'
         )
         return to_hetero_graph

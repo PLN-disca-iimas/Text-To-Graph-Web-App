@@ -31,7 +31,7 @@ class BaseGraphForm(FlaskForm):
     text = TextAreaField("Texto a graficar")
     file = FileField("O también puedes cargar archivo de texto", [validate_text_file])
     language = SelectField("Lenguaje", coerce=str, choices=AVAILABLE_LANGUAGES, default=AVAILABLE_LANGUAGES[0])
-    window_size = IntegerField("Tamaño de la ventana", default=20)
+    window_size = IntegerField("Tamaño de la ventana de coocurencia", default=2)
     apply_prep = BooleanField("Aplicar Pre-procesamientos", default=True)
     steps_preprocessing = SelectMultipleField("Pre-procesamientos para aplicar (Mantén presionado ctrl/cmd para seleccionar mas de uno)", coerce=str, choices=AVAILABLE_PREPROCESSORS)
     node_size = IntegerField("Tamaño del nodo (50 - 700)", default=None)
