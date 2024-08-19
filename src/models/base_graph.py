@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField
 from wtforms import TextAreaField, IntegerField, SelectField, BooleanField, SelectMultipleField, validators
 
-from src.constants import GRAPH_TYPES, ARROW_STYLES, AVAILABLE_LANGUAGES, AVAILABLE_PREPROCESSORS
+from src.constants import GRAPH_MODELS, ARROW_STYLES, AVAILABLE_LANGUAGES, AVAILABLE_PREPROCESSORS, GRAPH_TYPES
 
 
 class BaseGraph(BaseModel):
@@ -27,12 +27,13 @@ def validate_text_file(form, field):
         raise validators.ValidationError('Only .txt files are accepted')
 
 class BaseGraphForm(FlaskForm):
-    type = SelectField("Tipo de gráfico", coerce=str, choices=GRAPH_TYPES, default=GRAPH_TYPES[0])
+    model = SelectField("Modelo de Gráfico", coerce=str, choices=GRAPH_MODELS, default=GRAPH_MODELS[0])
     text = TextAreaField("Texto a graficar")
     file = FileField("O también puedes cargar archivo de texto", [validate_text_file])
     language = SelectField("Lenguaje", coerce=str, choices=AVAILABLE_LANGUAGES, default=AVAILABLE_LANGUAGES[0])
     window_size = IntegerField("Tamaño de la ventana de coocurencia", default=2)
     apply_prep = BooleanField("Aplicar Pre-procesamientos", default=True)
+    graph_type = SelectField("Tipo de Gráfico", coerce=str, choices=GRAPH_TYPES, default=GRAPH_TYPES[0])
     steps_preprocessing = SelectMultipleField("Pre-procesamientos para aplicar (Mantén presionado ctrl/cmd para seleccionar mas de uno)", coerce=str, choices=AVAILABLE_PREPROCESSORS)
     node_size = IntegerField("Tamaño del nodo (50 - 700)", default=None)
     font_size = IntegerField("Tamaño del texto del nodo (2 - 10)", default=None)

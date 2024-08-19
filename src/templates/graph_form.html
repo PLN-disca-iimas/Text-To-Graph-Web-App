@@ -4,9 +4,9 @@
 <form class="graph-form" action="{{ url_for('generate_graph') }}" method="POST" enctype="multipart/form-data">
     <h2 class="form-title">Ingresa los datos del grafo</h2>
     <div class="form-container">
-        <div class="form-graph-type-container">
-            {{ form.type.label(class_="form-label") }}
-            {{ form.type(class_="form-field")}}
+        <div class="form-graph-model-container">
+            {{ form.model.label(class_="form-label") }}
+            {{ form.model(class_="form-field")}}
         </div>
 
         <div class="form-text-input-container">
@@ -26,9 +26,15 @@
                 {{ form.window_size(class_="form-field")}}
             </div>
         </div>
-        <div>
-            {{ form.apply_prep.label(class_="form-label") }}
-            {{ form.apply_prep(class_="form-field")}}
+        <div class="form-graph-type-container">
+            <div>
+                {{ form.apply_prep.label(class_="form-label") }}
+                {{ form.apply_prep(class_="form-field")}}
+            </div>
+            <div>
+                {{ form.graph_type.label(class_="form-label") }}
+                {{ form.graph_type(class_="form-field")}}
+            </div>
         </div>
         <div class="form-graph-steps-processing-container">
             <div>

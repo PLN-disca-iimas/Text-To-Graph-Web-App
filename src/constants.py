@@ -1,5 +1,11 @@
 GRAPH_OUTPUT_DIRECTORY = "src/static/outputs/graphs/"
 
+GRAPH_TYPES = [
+    ("Graph", "Graph"), 
+    ("DiGraph", "DiGraph"), 
+    ("MultiGraph", "MultiGraph"), 
+    ("MultiDiGraph", "MultiDiGraph")
+]
 ARROW_STYLES = [
     ("-", "Curve"),
     ("->", "CurveB"),
@@ -18,7 +24,7 @@ ARROW_STYLES = [
 ]
 COOCURRENCE = "Coocurrence"
 HETEROGENEUS = "Heterogeneus"
-GRAPH_TYPES = [
+GRAPH_MODELS = [
     (COOCURRENCE, "Coocurrencia"),
     (HETEROGENEUS, "Heterogenea")
 ]

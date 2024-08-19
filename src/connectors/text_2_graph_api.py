@@ -21,7 +21,7 @@ class Text2GraphApiconnector:
     @staticmethod
     def get_coocurrence_graph(graph_options: dict) -> Cooccurrence:
         coocurrence_graph = Cooccurrence(
-            graph_type='DiGraph', 
+            graph_type=graph_options.get('graph_type','DiGraph'), 
             language=graph_options.get('language','sp'), 
             apply_prep=graph_options.get('apply_prep',True), 
             steps_preprocessing=graph_options.get('steps_preprocessing',[]),
@@ -33,7 +33,7 @@ class Text2GraphApiconnector:
     @staticmethod
     def get_heterogeneus_graph(graph_options: dict) -> Heterogeneous:
         to_hetero_graph = Heterogeneous(
-            graph_type = 'Graph', 
+            graph_type=graph_options.get('graph_type','Graph'), 
             language=graph_options.get('language','sp'), 
             apply_prep=graph_options.get('apply_prep',True), 
             steps_preprocessing=graph_options.get('steps_preprocessing',[]), 
