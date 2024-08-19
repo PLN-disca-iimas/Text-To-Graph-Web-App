@@ -39,6 +39,7 @@ def generate_graph():
 
 @app.route('/graph-plot/<docname>', methods=["GET"])
 def graph_plot(docname):
+    graph_code = GraphTextService.get_graph_code(docname)
     text_graph = GraphTextService.get_text_graph(docname)
     original_text = GraphTextService.get_original_text(docname)
     

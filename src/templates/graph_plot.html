@@ -15,8 +15,15 @@
 <div class="graph-plot-copy-button-container">
     <button value="{{ text_graph }}" onclick="copyToClipboard(this.value)">Copiar</button>
 </div>
-<div class="graph-test-graph-container">
+<div class="graph-text-graph-container">
     <textarea type="textarea" disabled>{{ text_graph }}</textarea>
+</div>
+
+<div class="graph-plot-copy-button-container">
+    <button value="{{ graph_code }}" onclick="copyToClipboard(this.value)">Copiar</button>
+</div>
+<div class="graph-text-graph-container">
+    <textarea type="textarea" disabled>{{ graph_code }}</textarea>
 </div>
 
 <div class="graph-plot-buttons-container">
@@ -25,6 +32,9 @@
     </a>
     <a class="graph-plot-download-txt-button" href="/download-file/outputs&graphs&{{docname}}.txt">
         Descargar .txt
+    </a>
+    <a class="graph-plot-download-txt-button" href="/download-file/outputs&graphs&{{docname}}.py">
+        Descargar .py
     </a>
 </div>
 

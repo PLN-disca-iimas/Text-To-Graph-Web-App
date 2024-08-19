@@ -12,7 +12,7 @@
     text-decoration: underline;
 }
 
-.graph-test-graph-container,
+.graph-text-graph-container,
 .graph-plot-input-container{
     text-align: center;
 }
@@ -26,7 +26,7 @@
     margin-bottom: 3vh;
 }
 
-.graph-test-graph-container>textarea{
+.graph-text-graph-container>textarea{
     width: 80%;
     height: 15vh;
     padding: 1vh;
