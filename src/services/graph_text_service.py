@@ -22,8 +22,6 @@ class GraphTextService:
         docname = GraphTextService._get_random_docname()
         graph = GraphTextService.get_graph_by_type(graph_data.get("model", ""), graph_data)
 
-        raise Exception
-
         if not graph:
             return ""
 
