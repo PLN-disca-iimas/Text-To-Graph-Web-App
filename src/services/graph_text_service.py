@@ -17,10 +17,12 @@ class GraphTextService:
         return Text2GraphApiconnector.get_test()
 
     @staticmethod
-    # @exception_handler
+    @exception_handler
     def generate_graph(graph_data: dict, file: FileStorage) -> str:
         docname = GraphTextService._get_random_docname()
         graph = GraphTextService.get_graph_by_type(graph_data.get("model", ""), graph_data)
+
+        raise Exception
 
         if not graph:
             return ""
