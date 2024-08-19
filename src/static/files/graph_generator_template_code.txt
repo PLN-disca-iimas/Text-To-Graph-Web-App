@@ -1,0 +1,25 @@
+from text2graphapi.text2graphapi.src.Cooccurrence import Cooccurrence
+from text2graphapi.text2graphapi.src.Heterogeneous import Heterogeneous
+
+import nltk
+nltk.download('omw-1.4')
+
+corpus_docs = [
+    {'id': 1, 'doc': "&text&"},
+]
+
+graph_model_by_type = {
+    "Cooccurrence": Cooccurrence,
+    "Heterogeneous": Heterogeneous,
+}
+
+to_word_graph = graph_model_by_type["&model&"](
+    graph_type='&graph_type&', 
+    language='&language&', 
+    apply_prep=&apply_prep&, 
+    steps_preprocessing=&steps_preprocessing&, 
+    window_size=&window_size&,
+    output_format='networkx'
+)
+to_word_graph_transformed = to_word_graph.transform(corpus_docs)
+print(to_word_graph_transformed)

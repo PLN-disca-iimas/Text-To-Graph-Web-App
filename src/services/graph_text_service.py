@@ -2,7 +2,7 @@ import uuid
 from werkzeug.datastructures import FileStorage
 
 from src import exception_handler
-from src.constants import GRAPH_OUTPUT_DIRECTORY, COOCURRENCE, HETEROGENEUS
+from src.constants import GRAPH_OUTPUT_DIRECTORY, COOCURRENCE, HETEROGENEUS, CODE_TEMPLATE_DIRECTORY
 from src.connectors.text_2_graph_api import Text2GraphApiconnector
 from src.managers.plot_manager import PlotManager
 from src.managers.file_manager import FileManager
@@ -32,6 +32,8 @@ class GraphTextService:
         PlotManager.generate_plot_image(graph, transformed_text[0], graph_data, docname, graph_data.get("model", ""))
         FileManager.write_file(str(transformed_text), f"{GRAPH_OUTPUT_DIRECTORY}{docname}.txt")
         FileManager.write_file(str(transformed_text[0].get("prep_text")), f"{GRAPH_OUTPUT_DIRECTORY}{docname}_.txt")
+        graph_code = GraphTextService.generate_graph_code(graph_data)
+        FileManager.write_file(graph_code, f"{GRAPH_OUTPUT_DIRECTORY}{docname}*.txt")
 
         return docname
     
@@ -69,3 +71,17 @@ class GraphTextService:
         graph = GRAPH_TYPES_FUNCTIONS.get(graph_model)
 
         return graph
+    
+    @staticmethod
+    def generate_graph_code(graph_data: dict) -> str:
+        code_template = FileManager.read_file(CODE_TEMPLATE_DIRECTORY)
+
+        return code_template\
+            .replace("&text&", graph_data['text'])\
+            .replace("&model&", graph_data['model'])\
+            .replace("&graph_type&", graph_data['graph_type'])\
+            .replace("&language&", graph_data['language'])\
+            .replace("&window_size&", graph_data['window_size'])\
+            .replace("&apply_prep&", str(graph_data['apply_prep']))\
+            .replace("&steps_preprocessing&", str(graph_data['steps_preprocessing']))
+            

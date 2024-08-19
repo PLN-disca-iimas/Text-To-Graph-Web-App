@@ -1,4 +1,5 @@
 GRAPH_OUTPUT_DIRECTORY = "src/static/outputs/graphs/"
+CODE_TEMPLATE_DIRECTORY = "src/static/files/graph_generator_template_code.txt"
 
 GRAPH_TYPES = [
     ("Graph", "Graph"), 
@@ -22,10 +23,10 @@ ARROW_STYLES = [
     ("wedge", "Wedge"),
     ("|-|", "BarAB"),
 ]
-COOCURRENCE = "Coocurrence"
+COOCCURRENCE = "Cooccurrence"
 HETEROGENEUS = "Heterogeneus"
 GRAPH_MODELS = [
-    (COOCURRENCE, "Coocurrencia"),
+    (COOCCURRENCE, "Coocurrencia"),
     (HETEROGENEUS, "Heterogenea")
 ]
 AVAILABLE_LANGUAGES = [
@@ -42,6 +43,12 @@ AVAILABLE_PREPROCESSORS = [
     ("handle_contractions", "Manejar contracciones"),
     ("handle_stop_words", "Manejar palabras de pausa"),
     ("to_lowercase", "Texto a minúsculas"),
+]
+AVAILABLE_OUTPUT_FORMATS = [
+    ("networkx", "networkx"), 
+    ("adj_matrix", "adj_matrix"), 
+    ("adj_list", "adj_list"), 
+    ("adj_pandas", "adj_pandas")
 ]
 NODE_CATEGORY_COLORS = {
     "NOUN": 1,

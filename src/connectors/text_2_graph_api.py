@@ -23,10 +23,10 @@ class Text2GraphApiconnector:
         coocurrence_graph = Cooccurrence(
             graph_type=graph_options.get('graph_type','DiGraph'), 
             language=graph_options.get('language','sp'), 
-            apply_prep=graph_options.get('apply_prep',True), 
+            apply_prep=len(graph_options.get('steps_preprocessing',[])) > 0, 
             steps_preprocessing=graph_options.get('steps_preprocessing',[]),
             window_size=int(graph_options.get('window_size',2)),
-            output_format='adj_matrix'
+            output_format=graph_options.get('output_format','adj_matrix')
         )
         return coocurrence_graph
 
@@ -35,10 +35,10 @@ class Text2GraphApiconnector:
         to_hetero_graph = Heterogeneous(
             graph_type=graph_options.get('graph_type','Graph'), 
             language=graph_options.get('language','sp'), 
-            apply_prep=graph_options.get('apply_prep',True), 
+            apply_prep=len(graph_options.get('steps_preprocessing',[])) > 0, 
             steps_preprocessing=graph_options.get('steps_preprocessing',[]), 
             window_size=int(graph_options.get('window_size',2)),
-            output_format = 'networkx'
+            output_format=graph_options.get('output_format','networkx')
         )
         return to_hetero_graph
 

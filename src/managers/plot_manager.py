@@ -1,4 +1,4 @@
-from src.constants import GRAPH_OUTPUT_DIRECTORY, COOCURRENCE, HETEROGENEUS, NODE_CATEGORY_COLORS
+from src.constants import GRAPH_OUTPUT_DIRECTORY, COOCCURRENCE, HETEROGENEUS, NODE_CATEGORY_COLORS
 from text2graphapi.text2graphapi.src.Cooccurrence import Cooccurrence
 from src.models.plot_options import PlotOptions, NodeOptions, NodesLabelsOptions, EdgesOptions, EdgeLabelsOptions
 
@@ -26,7 +26,7 @@ class PlotManager:
         edge_labels = dict([((nodes_labels[edge_from], nodes_labels[edge_to]), f"{edge_prefix}={frequency.get(edge_prefix)}") for edge_from, edge_to, frequency in transformed_graph.get("edges",[])])
         edge_colors = [0] * len(transformed_graph.get("edges",[]))
 
-        if graph_type == COOCURRENCE:
+        if graph_type == COOCCURRENCE:
             edge_colors = [int((edge_labels[(nodes_labels[edge_from], nodes_labels[edge_to])]).replace(f"{edge_prefix}=","")) / 10 for edge_from, edge_to in transformed_graph["nx_graph"].edges() if edge_labels[(nodes_labels[edge_from], nodes_labels[edge_to])]]
 
         node_options = NodeOptions(
