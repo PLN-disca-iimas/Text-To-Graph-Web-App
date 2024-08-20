@@ -28,7 +28,7 @@ class GraphTextService:
         if file:
             graph_data['text'] = GraphTextService.read_upload_text_file(file)
 
-        transformed_text = Text2GraphApiconnector.get_transformed_text(graph, [{"id": 1, "doc": graph_data.get("text", "")}])
+        transformed_text = Text2GraphApiconnector.get_transformed_text(graph, [{"id": 1, "doc": ' '.join(graph_data.get("text", "").splitlines())}])
         PlotManager.generate_plot_image(graph, transformed_text[0], graph_data, docname, graph_data.get("model", ""))
         FileManager.write_file(str(transformed_text), f"{GRAPH_OUTPUT_DIRECTORY}{docname}.txt")
         FileManager.write_file(str(transformed_text[0].get("prep_text")), f"{GRAPH_OUTPUT_DIRECTORY}{docname}_.txt")
