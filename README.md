@@ -67,6 +67,5 @@ To start the web application, run the following command:
     ```bash
     python app.py
     ```
-The application will be available at http://0.0.0.0:5000.
 
 3. Generate test graph in http://0.0.0.0:5000/test
